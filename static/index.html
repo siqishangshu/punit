@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>配置页面</title>
+</head>
+<link rel="stylesheet" type="text/css" href="app.css">
+<script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="app.js"></script>
+
+<body>
+  <div class="container">
+    <ul class="nav-tabs clearfix">
+      <li class="tab-item active">
+        <a href="#">电子秤</a>
+      </li>
+      <li class="tab-item">
+        <a href="#">打印机</a>
+      </li>
+    </ul>
+    <div class="tab-content">
+      <div class="tab-pane fade active in" id="scale">
+        <form action="set/config" method="post">
+          <h1>电子秤配置</h1>
+          <label>
+              <span>端口名称：</span>
+              <select name="port" class="port">
+              </select>
+          </label>
+          <label>
+              <span>波 特 率：</span>
+              <select name="rate" class="rate">
+                  <option value="300">300</option>
+                  <option value="600">600</option>
+                  <option value="1200">1200</option>
+                  <option value="1800">1800</option>
+                  <option value="2400">2400</option>
+                  <option value="3600">3600</option>
+                  <option value="4800">4800</option>
+                  <option value="7200">7200</option>
+                  <option value="9600" selected="selected">9600</option>
+                  <option value="14400">14400</option>
+                  <option value="19200">19200</option>
+                  <option value="28800">28800</option>
+                  <option value="38400">38400</option>
+                  <option value="57600">57600</option>
+                  <option value="115300">115300</option>
+                  <option value="230400">230400</option>
+              </select>
+          </label>
+          <label>
+              <span>超时时间(s)：</span>
+              <select name="timeout" class="timeout">
+                  <option value="0.5">0.5</option>
+                  <option value="1">1</option>
+                  <option value="1.5">1.5</option>
+                  <option value="2" selected="selected">2</option>
+                  <option value="2.5">2.5</option>
+                  <option value="3">3</option>
+              </select>
+          </label>
+          <div class="t-a-c">
+            <input type="submit" class="button m-r-23" value="修改" />
+            <input type="button" class="button test" value="测试" />
+          </div>
+        </form>
+        <br /><br />
+        <div class="curr-config-wrap">
+          <h1>当前配置</h1>
+          <label>
+              <span>端口名称：</span>
+              <p class="result-port"></p>
+          </label>
+          <label>
+              <span>波特率：</span>
+              <p class="result-rate"></p>
+          </label>
+          <label>
+              <span>超时时间：</span>
+              <p class="result-timeout"></p>
+          </label>
+        </div>
+        <div class="curr-result-wrap">
+          <h1>测试读取</h1>
+          <input type="button" class="button read-btn" value="读取" />
+          <label class="result-lable">
+              <span class="result"></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="tab-pane fade" id="printer">
+        <div class="printer-config">
+          <h1>配置列表</h1>
+          <div class="t-a-r">
+            <button type="button" class="button small-btn" id="oper-modal-btn">
+              新增
+            </button>
+          </div>
+          <table id="config-list" style="width:100%; text-align:center; margin:0 auto;">
+            <tr style="font-size:15px; font-width:bolder; line-height:50px">
+              <th>配置</th>
+              <th>打印机</th>
+              <th>纸张尺寸(mm)</th>
+              <th>上边距(mm)</th>
+              <th>下边距(mm)</th>
+              <th>左边距(mm)</th>
+              <th>右边距(mm)</th>
+              <th>操作</th>
+            </tr>
+          </table>
+        </div>
+        <br />
+        <br />
+        <h1>打印测试</h1>
+        <label>
+            <span>配置：</span>
+            <select id="template-code-list">
+              <option value="" selected>请选择</option>
+            </select>
+        </label>
+        <label style="margin-top:50px;">
+
+          <span>打印内容：</span>
+          <textarea name="print-content" rows="5" cols="70" id="print-content" autocomplete="off" style="resize:none;"></textarea>
+        </label>
+        <div class="t-a-c">
+          <button type="button" class="button m-r-23" id="printer-test">打印</button>
+          <button type="button" class="button" id="pre-modal-btn">预览</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="cover" id="oper-modal">
+      <div class="modal">
+        <div class="content">
+          <form class="form">
+            <div class="">
+              <h1 id="modal-title-new">新增配置</h1>
+              <h1 id="modal-title-modify">编辑配置</h1>
+            </div>
+            <label>
+                <span>配置：</span>
+                <input type="text" class="w-50-per" id="template-code-new" placeholder="请输入配置名">
+                <span class="template-code" id="template-code-modify" style="width:auto;"></span>
+                <!-- <span class="f-n m-l-17">设为默认</span>
+                <input type="checkbox" name="is-default-checkbox" id="is-default-checkbox" autocomplete="off"> -->
+            </label>
+            <label>
+                <span>打印机：</span>
+                <select name="printer-name" class="w-50-per" id="printer-name">
+                  <option value="" selected>请选择</option>
+                </select>
+            </label>
+            <label>
+                <span>纸张尺寸(mm)：</span>
+                <select name="page-size" class="w-50-per" id="page-size">
+                    <option value="" selected>请选择</option>
+                    <option value='["841","1189"]'>A0 (841 * 1189)</option>
+                    <option value='["594","841"]'>A1 (594 * 841)</option>
+                    <option value='["420","594"]'>A2 (420 * 594)</option>
+                    <option value='["297","420"]'>A3 (297 * 420)</option>
+                    <option value='["210","297"]'>A4 (210 * 297)</option>
+                    <option value='["148","210"]'>A5 (148 * 210)</option>
+                    <option value='["105","148"]'>A6 (105 * 148)</option>
+                    <option value='["74","105"]'>A7 (74 * 105)</option>
+                    <option value='["52","74"]'>A8 (52 * 74)</option>
+                    <option value='["37","52"]'>A9 (37 * 52)</option>
+                    <option value='["26","37"]'>A10 (26 * 37)</option>
+                    <option value='["1000","1414"]'>B0 (1000 * 1414)</option>
+                    <option value='["707","1000"]'>B1 (707 * 1000)</option>
+                    <option value='["500","707"]'>B2 (500 * 707)</option>
+                    <option value='["353","500"]'>B3 (353 * 500)</option>
+                    <option value='["250","353"]'>B4 (250 * 353)</option>
+                    <option value='["176","250"]'>B5 (176 * 250)</option>
+                    <option value='["125","176"]'>B6 (125 * 176)</option>
+                    <option value='["88","125"]'>B7 (88 * 125)</option>
+                    <option value='["62","88"]'>B8 (62 * 88)</option>
+                    <option value='["44","62"]'>B9 (44 * 62)</option>
+                    <option value='["31","44"]'>B10 (31 * 44)</option>
+                </select>
+                <div class="w-50-per cus-ps-wrapper" id="cus-ps-wrapper">
+                  <input class="w-48-per" type="text" placeholder="页宽" id="cus-ps-width" autocomplete="off" style="margin-right:8px;">
+                  <input class="w-48-per" type="text" placeholder="页长" id="cus-ps-height" autocomplete="off" style="margin-right:0;">
+                </div>
+                <span class="m-l-17 f-n" style="width:auto">其他尺寸</span>
+                <input type="checkbox" name="cus-ps-checkbox" id="cus-ps-checkbox" autocomplete="off">
+            </label>
+            <label>
+                <span>页边距(mm)：</span>
+                <input class="page-margin" type="text" name="margin-top" placeholder="上" id="margin-top" autocomplete="off">
+                <input class="page-margin" type="text" name="margin-bottom" placeholder="下" id="margin-bottom" autocomplete="off">
+                <input class="page-margin" type="text" name="margin-left" placeholder="左" id="margin-left" autocomplete="off">
+                <input class="page-margin" type="text" name="margin-right" placeholder="右" id="margin-right" autocomplete="off" style="margin-right:0;">
+            </label>
+            <div class="t-a-c">
+              <button type="button" class="button" id="modal-btn-new">新增</button>
+              <button type="button" class="button" id="modal-btn-modify">修改</button>
+            </div>
+          </form>
+        </div>
+        <div class="close-label">x</div>
+      </div>
+    </div>
+    <div class="cover t-a-c" id="prev-modal">
+      <div class="modal">
+        <div class="content">
+        </div>
+        <div class="close-label">x</div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

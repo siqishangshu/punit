@@ -2,17 +2,17 @@
 @echo off
 rem This is the logistics product component .
 rem All copyright belongs to logistics.  
-rem     https://www.yourdomain.com/xtool/download
+rem     https://www.siqishangshu.com/punit/download
 rem     Author:siqishangshu@foxmail.com
 rem Through the above link, you can get the latest software version and technical support.
 rem If you have any questions in use, please consult yourdo.com.
 
 rem ---------------------------------------------------------------------------
-rem UnInstall script for the xtool Server
+rem UnInstall script for the punit Server
 rem ---------------------------------------------------------------------------
-echo Start remove xtool in your computer
-set DIR="C:\xtool"
-set PRO=xtool.exe
+echo Start remove punit in your computer
+set DIR="C:\punit"
+set PRO=punit.exe
 
 tasklist.exe -v | findstr %PRO% >NUL
 if %ErrorLevel% == 0 (
@@ -38,17 +38,17 @@ goto TheEnd
 :Windows7
 echo Windows7
 
-if exist "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup\xtool.exe.lnk" (
+if exist "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup\punit.exe.lnk" (
 	echo Clean old link 
-	del /F "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup\xtool.exe.lnk" >NUL
+	del /F "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup\punit.exe.lnk" >NUL
 )
 
-if exist "%USERPROFILE%\Desktop\xtool.exe.lnk" (
-	del /F "%USERPROFILE%\Desktop\xtool.exe.lnk" >NUL
+if exist "%USERPROFILE%\Desktop\punit.exe.lnk" (
+	del /F "%USERPROFILE%\Desktop\punit.exe.lnk" >NUL
 )
  
-if exist "C:\Users\Administrator\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\xtool" (
-    	rd /s /q "C:\Users\Administrator\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\xtool"
+if exist "C:\Users\Administrator\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\punit" (
+    	rd /s /q "C:\Users\Administrator\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\punit"
 ) 
 
 goto TheEnd
@@ -56,17 +56,17 @@ goto TheEnd
 :Windows10
 echo Windows10
 
-if exist "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup\xtool.exe.lnk" (
+if exist "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup\punit.exe.lnk" (
 	echo Clean old link
-	del /F "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup\xtool.exe.lnk" >NUL
+	del /F "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup\punit.exe.lnk" >NUL
 )
 
-if exist "%USERPROFILE%\Desktop\xtool.exe.lnk" (
-	del /F "%USERPROFILE%\Desktop\xtool.exe.lnk" >NUL
+if exist "%USERPROFILE%\Desktop\punit.exe.lnk" (
+	del /F "%USERPROFILE%\Desktop\punit.exe.lnk" >NUL
 )
 
-if exist "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\xtool" (
-    	rd /s /q "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\xtool"
+if exist "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\punit" (
+    	rd /s /q "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\punit"
 )
 
 goto TheEnd
@@ -75,18 +75,18 @@ goto TheEnd
 echo OtherVersion 
 if exist   (
 	echo Clean old link 
-	del /F "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup\xtool.exe.lnk" >NUL
+	del /F "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup\punit.exe.lnk" >NUL
 )
 
-if exist "%USERPROFILE%\Desktop\xtool.exe.lnk" (
-	del /F "%USERPROFILE%\Desktop\xtool.exe.lnk" >NUL
+if exist "%USERPROFILE%\Desktop\punit.exe.lnk" (
+	del /F "%USERPROFILE%\Desktop\punit.exe.lnk" >NUL
 )
  
-if exist "C:\Users\Administrator\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\xtool"(
-    	rd /s /q "C:\Users\Administrator\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\xtool"
+if exist "C:\Users\Administrator\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\punit"(
+    	rd /s /q "C:\Users\Administrator\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\punit"
 )  
 goto TheEnd
 
 :TheEnd
-msg %username% /time:7  "The xtool uninstall successfully"
+msg %username% /time:7  "The punit uninstall successfully"
 pause

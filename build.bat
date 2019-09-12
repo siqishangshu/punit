@@ -1,7 +1,7 @@
 @echo off
 
-rem Start make xtool.exe
-echo Start make xtool.exe
+rem Start make punit.exe
+echo Start make punit.exe
 
 cd /d %~dp0
 echo "At %CD%"
@@ -13,9 +13,9 @@ set LOG=%PWD%\log
 set STATIC=%PWD%\static
 set TOOL=%PWD%\tool
 set SCRIPT=%PWD%\script
-set TARGET=%PWD%\xtool
+set TARGET=%PWD%\punit
 set DRIVER=%PWD%\driver
-set RAR=xtool-build-%PROCESSOR_ARCHITECTURE%.rar
+set RAR=punit-build-%PROCESSOR_ARCHITECTURE%.rar
 
 echo now you at %PWD%
 
@@ -33,9 +33,9 @@ if exist "%PWD%\dist" (
 	rd /s /q "%PWD%\dist"
 )
 
-if exist "%PWD%\xtool.spec" (
+if exist "%PWD%\punit.spec" (
 	echo Clean last dist
-	del /F "%PWD%\xtool.spec"
+	del /F "%PWD%\punit.spec"
 )
 
 if exist "%TARGET%" (
@@ -56,24 +56,24 @@ echo d|xcopy "%TOOL%"  "%TARGET%\tool" /e/r/h/y
 echo d|xcopy "%LOG%"  "%TARGET%\log" /e/r/h/y
 echo d|xcopy "%DRIVER%"  "%TARGET%\driver" /e/r/h/y
 echo Y|del "%TARGET%\log\*"
-copy /Y "%SCRIPT%\xtool.exe.lnk" "%TARGET%\"
+copy /Y "%SCRIPT%\punit.exe.lnk" "%TARGET%\"
 copy /Y "%SCRIPT%\install.bat" "%PWD%\"
 copy /Y "%SCRIPT%\uninstall.bat" "%TARGET%\"
 copy /Y "%SCRIPT%\使用必读.txt" "%PWD%\"
 
-pyinstaller -F xtool.py
+pyinstaller -F punit.py
 
-copy /Y "%DIST%\xtool.exe" "%TARGET%\"
+copy /Y "%DIST%\punit.exe" "%TARGET%\"
 
 if exist "%RAR%" (
 	echo Clean rar version
 	echo Y|del "%PWD%\%RAR%"
 )
 
-"C:\Program Files\WinRAR\Rar.exe" a -df -ep1 xtool-build-%PROCESSOR_ARCHITECTURE%.rar "%TARGET%"
-"C:\Program Files\WinRAR\Rar.exe" a -df -ep1 xtool-build-%PROCESSOR_ARCHITECTURE%.rar "%PWD%\install.bat"
-"C:\Program Files\WinRAR\Rar.exe" a -ep1 xtool-build-%PROCESSOR_ARCHITECTURE%.rar "%PWD%\README.md"
+"C:\Program Files\WinRAR\Rar.exe" a -df -ep1 punit-build-%PROCESSOR_ARCHITECTURE%.rar "%TARGET%"
+"C:\Program Files\WinRAR\Rar.exe" a -df -ep1 punit-build-%PROCESSOR_ARCHITECTURE%.rar "%PWD%\install.bat"
+"C:\Program Files\WinRAR\Rar.exe" a -ep1 punit-build-%PROCESSOR_ARCHITECTURE%.rar "%PWD%\README.md"
 
-msg %username% /time:7  "The xtool-build-%PROCESSOR_ARCHITECTURE%.rar build successfully"
+msg %username% /time:7  "The punit-build-%PROCESSOR_ARCHITECTURE%.rar build successfully"
 
 echo Done

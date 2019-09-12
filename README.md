@@ -1,4 +1,4 @@
-xtool
+punit
 
     This is the logistics product component .
     All copyright belongs to logistics.
@@ -46,11 +46,11 @@ IDE
 
 Code
 
-    git clone git@gitserver:liuchuan/xtool.git
+    git clone git@gitserver:liuchuan/punit.git
 
 Run
 
-    python xtool.py
+    python punit.py
 
 Build
 
@@ -59,23 +59,23 @@ Build
 Package
 
     build.bat (just for windows)
-    then you got the xtool-build-{32-bit|64-bit}-{version}.rar
+    then you got the punit-build-{32-bit|64-bit}-{version}.rar
 
 For Users
 
 Download
 
     you can get the newer version and docs on this page
-        https://yourdomain/xtool/
+        https://yourdomain/punit/
 Install
 
-    Open then xtool-build-{32-bit|64-bit}-{version}.rar
+    Open then punit-build-{32-bit|64-bit}-{version}.rar
     Then RUN install.bat
 
 Run
 
     The Server already regit in your services with Startup running
-    In the case is it doesn't work Double click on Link on Desktop or Start Menu named xtool.exe
+    In the case is it doesn't work Double click on Link on Desktop or Start Menu named punit.exe
     and do not close that window unless you wouldn't use the services
 
 Uninstall
@@ -85,4 +85,4 @@ Uninstall
 
 Other
     You will find UserManual on this page.
-    https://yourdomian/xtool/
+    https://yourdomian/punit/

@@ -46,7 +46,7 @@ IDE
 
 Code
 
-    git clone git@gitserver:liuchuan/punit.git
+    git clone git@github.com:mxsic-cn/punit.git
 
 Run
 
@@ -66,7 +66,7 @@ For Users
 Download
 
     you can get the newer version and docs on this page
-        https://yourdomain/punit/
+      https://github.com/mxsic-cn/punit
 Install
 
     Open then punit-build-{32-bit|64-bit}-{version}.rar
@@ -85,4 +85,4 @@ Uninstall
 
 Other
     You will find UserManual on this page.
-    https://yourdomian/punit/
+   https://github.com/mxsic-cn/punit
